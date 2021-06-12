@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.stream.Stream;
 
 public class FileText implements I_File{
@@ -15,14 +16,14 @@ public class FileText implements I_File{
     }
     
     public FileText(String ruta){
-        this.archivo = new File(ruta); 
+        this.archivo = new File(ruta);
     }
 
     @Override
     public void setText(String texto) {
         try (FileWriter in = new FileWriter(archivo)){            
             in.write(texto);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -35,7 +36,7 @@ public class FileText implements I_File{
             while((car=in.read())!=-1){
                 sb.append((char)car);
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return sb.toString();
@@ -45,7 +46,7 @@ public class FileText implements I_File{
     public void append(String texto) {
         try (FileWriter in=new FileWriter(this.archivo,true)){
             in.write(texto);
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -54,7 +55,7 @@ public class FileText implements I_File{
     public Stream<String> getStream() {
         try{
             return new BufferedReader(new FileReader(archivo)).lines();
-        } catch (Exception e) {
+        } catch (IOException e) {
             return null;
         }
     }

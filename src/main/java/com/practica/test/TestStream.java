@@ -37,7 +37,7 @@ public class TestStream {
         System.out.println("**************getTreeSet***********************");
         fText.getTreeSet().forEach(System.out::println);
         System.out.println("**************remove**************************");
-        fText.remove("Lunes");
+        fText.remove("Lunes. ");
         fText.getStream().forEach(System.out::println);
         System.out.println("*************addlines************************");
         List<String> lista = new ArrayList();

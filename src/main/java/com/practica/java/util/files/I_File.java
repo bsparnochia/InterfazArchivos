@@ -57,7 +57,7 @@ public interface I_File {
    }
    default void remove(String line){
        List<String> list= this.getAll();
-       list.removeIf(u->(u.contains(line)));
+       list.remove(line);
        clear();
        addlines(list);
    }
